@@ -1,3 +1,8 @@
+/*
+Task:
+Modify the code of up, down and showStep to make the calls chainable.
+*/
+
 let ladder = {
   step: 0,
   up() {
@@ -13,3 +18,5 @@ let ladder = {
     return this;
   }
 };
+
+// Solution adds 'return this' to each method
