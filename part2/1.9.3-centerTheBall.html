@@ -1,0 +1,45 @@
+<!-- Task:
+
+What are coordinates of the field center?
+
+Calculate them and use to place the ball into the center of the green field.
+
+-->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    // My solution
+    let ball = document.getElementById('ball');
+    let field = document.getElementById('field');
+    ball.style.top = field.clientHeight/2 - ball.clientHeight/2 + 'px';
+    ball.style.left = field.clientWidth/2 - ball.clientWidth/2 + 'px';
+  </script>
+
+</body>
+
+</html>

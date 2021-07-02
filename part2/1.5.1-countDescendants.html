@@ -1,0 +1,76 @@
+<!-- Task:
+
+There’s a tree structured as nested ul/li.
+
+Write the code that for each <li> shows:
+
+1. What’s the text inside it (without the subtree)
+2. The number of nested <li> – all descendants, including the deeply nested ones.
+
+-->
+
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <ul>
+    <li>Animals
+      <ul>
+        <li>Mammals
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li>Other
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Fishes
+      <ul>
+        <li>Aquarium
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li>Sea
+          <ul>
+            <li>Sea trout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    // My solution
+    let allLi = document.getElementsByTagName('li');
+    for (li of allLi) {
+      let name = li.childNodes[0].textContent.trim();
+    	let numNestedLi = li.getElementsByTagName('li').length;
+      alert(`${name}: ${numNestedLi}`);
+    };
+
+    /* Book solution
+
+    for (let li of document.querySelectorAll('li')) {
+    let title = li.firstChild.data;
+
+    // title is the text in <li> before any other nodes
+    }
+    
+    Then we can get the number of descendants as li.getElementsByTagName('li').length.
+    */
+    
+  </script>
+
+</body>
+</html>

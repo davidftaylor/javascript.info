@@ -1,0 +1,15 @@
+<!-- Task: Write the code to select the element with data-widget-name attribute from the document and to read its value. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+    let elem = document.body.firstElementChild;
+    //alert(elem.getAttribute('data-widget-name'));
+    alert(elem.dataset.widgetName);
+   </script>
+</body>
+</html>
