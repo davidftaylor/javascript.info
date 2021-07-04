@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 3px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #E6E6E6;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="calendar"></div>
+
+  <script>
+  /* It is assumed that the user enters zero-indexed months,
+   * same as how Date.prototype.getMonth() returns months
+   */
+
+  function createCalendar(elem, year, month) {
+    
+    let table = document.createElement('table');
+    let firstRow = document.createElement('tr');
+
+    table.append(firstRow);
+
+    let days = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+
+    // Creating header row
+    for (let i of days) {
+      let th = document.createElement('th');
+      th.innerHTML = i;
+      firstRow.append(th);
+    }
+
+    let firstDayOfMonth = new Date(year, month).getDay();
+    let lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+    // Recalibrating day to match index of day position in array 'days' above
+    if (!firstDayOfMonth) {
+      firstDayOfMonth = 6;
+    } else {
+      firstDayOfMonth = firstDayOfMonth - 1;
+    }
+
+    let dayCounter = 0;
+
+    outer:
+    while (true) {
+      let tr = document.createElement('tr');
+
+      // Generate rows of 7
+      for (let i = 0; i < 7; i++) {
+
+        // Break outer loop if last date is reached
+        if (dayCounter == lastDateOfMonth) break outer;
+
+        let td = document.createElement('td');
+
+        tr.append(td);
+        table.append(tr);
+
+        // Add dates to td elements
+        if (i == firstDayOfMonth && !dayCounter || dayCounter) {
+          td.innerHTML = ++dayCounter;
+        }
+      }
+    }
+
+    elem.append(table)
+  }
+
+    // Call the function to produce a calendar for July 2021
+    createCalendar(calendar, 2021, 6);
+  </script>
+
+</body>
+</html>
