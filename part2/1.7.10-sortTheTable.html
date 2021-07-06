@@ -1,0 +1,48 @@
+<!-- Task: Write the code to sort the table by the "name" column. -->
+
+<table>
+<thead>
+  <tr>
+    <th>Name</th><th>Surname</th><th>Age</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>John</td><td>Smith</td><td>10</td>
+  </tr>
+  <tr>
+    <td>Pete</td><td>Brown</td><td>15</td>
+  </tr>
+  <tr>
+    <td>Ann</td><td>Lee</td><td>5</td>
+  </tr>
+  <tr>
+    <td>David</td><td>Taylor</td><td>5</td>
+  </tr>
+   <tr>
+    <td>Bryn</td><td>Judkins</td><td>5</td>
+  </tr>
+</tbody>
+</table>
+
+<script>
+
+  let tbody = document.querySelector('tbody');
+
+  let tbodyTrs = tbody.querySelectorAll('tr');
+
+  let sortedTrs = Array.from(tbodyTrs).sort((tr1, tr2) => {
+  	let firstLetter1 = tr1.children[0].textContent[0];
+  	let firstLetter2 = tr2.children[0].textContent[0];
+
+  	if (firstLetter1 < firstLetter2) return -1;
+  	return 1;
+  })
+
+  tbody.innerHTML = '';
+
+  for (let tr of sortedTrs) {
+  	tbody.append(tr);
+  }
+
+</script>

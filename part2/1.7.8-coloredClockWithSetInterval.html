@@ -1,0 +1,60 @@
+<!-- Task: Create a colored clock. Use HTML/CSS for the styling, JavaScript only updates time in elements. -->
+
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <style>
+
+    .hours {
+      color:  red;
+    }
+
+    .minutes {
+      color:  green;
+    }
+
+    .seconds {
+      color: blue;
+    }
+
+  </style>
+
+  <!-- click on this button calls clockStart() -->
+  <input type="button" onclick="clockStart()" value="Start">
+
+  <!-- click on this button calls clockStop() -->
+  <input type="button" onclick="clockStop()" value="Stop">
+
+  <script>
+
+    let clockDiv = document.createElement('div');
+
+    function makeClock() {
+      let today = new Date();
+
+      let clock = `<span class="hours">${today.getHours() % 12 || 12}</span>:<span class="minutes">${today.getMinutes().toString().padStart(2, '0')}</span>:<span class="seconds">${today.getSeconds().toString().padStart(2, '0')}</span>`
+
+      clockDiv.innerHTML = clock;
+      document.body.prepend(clockDiv);
+    }
+
+    let intervalId;
+
+    function clockStart() {
+      if (!intervalId) intervalId = setInterval(makeClock, 1000);
+      makeClock();
+    }
+
+    function clockStop() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    makeClock();
+    clockStart();
+
+  </script>
+
+</body>
+</html>

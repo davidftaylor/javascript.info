@@ -62,6 +62,7 @@
     outer:
     while (true) {
       let tr = document.createElement('tr');
+      table.append(tr);
 
       // Generate rows of 7
       for (let i = 0; i < 7; i++) {
@@ -72,7 +73,6 @@
         let td = document.createElement('td');
 
         tr.append(td);
-        table.append(tr);
 
         // Add dates to td elements
         if (i == firstDayOfMonth && !dayCounter || dayCounter) {
