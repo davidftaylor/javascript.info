@@ -20,6 +20,8 @@ Calculate them and use to place the ball into the center of the green field.
 
     #ball {
       position: absolute;
+      width: 40px;
+      height: 40px;
     }
   </style>
 </head>
@@ -34,6 +36,7 @@ Calculate them and use to place the ball into the center of the green field.
 
   <script>
     // My solution
+    
     let ball = document.getElementById('ball');
     let field = document.getElementById('field');
     ball.style.top = field.clientHeight/2 - ball.clientHeight/2 + 'px';
