@@ -1,0 +1,56 @@
+<!-- Task: Create a menu that opens/collapses on click -->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <style>
+
+    .menu {
+      display: inline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="menu">
+    <p class="text">
+    <span class="closed">▶</span>
+    <span class="open">▼</span>
+    Sweeties (click me)!
+    </p>
+  </div>
+
+  <ul class="sweeties">
+    <li>Cake</li>
+    <li>Donut</li>
+    <li>Honey</li>
+  </ul>
+
+  <script>
+
+    let p = document.querySelector('text');
+    let ul = document.getElementsByClassName('sweeties')[0];
+    let symbolWhenClosed = document.getElementsByClassName('closed')[0];
+    let symbolWhenOpen = document.getElementsByClassName('open')[0];
+
+    symbolWhenClosed.addEventListener('click', () => {
+      ul.style.display = 'block';
+      symbolWhenClosed.style.display = 'none';
+      symbolWhenOpen.style.display = 'inline';
+    });
+
+    symbolWhenOpen.addEventListener('click', () => {
+      ul.style.display = 'none';
+      symbolWhenOpen.style.display = 'none';
+      symbolWhenClosed.style.display = 'inline';
+    });
+
+    symbolWhenClosed.style.display = 'none';
+
+  </script>
+
+</body>
+</html>

@@ -29,6 +29,13 @@ Notes:
       background-color: #00FF00;
       overflow: hidden;
     }
+
+    #ball {
+      position: absolute;
+      width:  40px;
+      height:  40px;
+      transition: 1s all;
+    }
   </style>
 </head>
 
@@ -39,10 +46,39 @@ Notes:
 
 
   <div id="field">
-    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   </div>
 
+  <script>
+
+    let field = document.getElementById('field');
+    let ball = document.getElementById('ball');
+
+    let fieldCoords = field.getBoundingClientRect();
+
+    field.addEventListener('click', (event) => {
+      let ballCoords = {
+        top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight/2,
+        left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth/2
+      }
+
+      if (ballCoords.top < 0) ballCoords.top = 0;
+      if (ballCoords.left < 0) ballCoords.left = 0;
+
+      if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+        ballCoords.top = field.clientHeight - ball.clientHeight;
+      }
+
+      if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+        ballCoords.left = field.clientWidth - ball.clientWidth;
+      }
+
+      ball.style.top = ballCoords.top + 'px';
+      ball.style.left = ballCoords.left + 'px';
+    });
+
+  </script> 
 
 </body>
 </html>
